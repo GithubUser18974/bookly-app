@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   flutter_bloc: ^8.1.6
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:
