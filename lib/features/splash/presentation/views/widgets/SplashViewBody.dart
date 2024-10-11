@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untitled/core/utils/assets.dart';
+import 'package:untitled/features/home/presentation/views/home_view.dart';
+
+import '../../../../../core/constants.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -12,12 +16,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+  void InitSlidingAnimation() {
     animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
     slidingAnimation =
         Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
             .animate(animationController);
@@ -25,6 +26,21 @@ class _SplashViewBodyState extends State<SplashViewBody>
     slidingAnimation.addListener(() {
       setState(() {});
     });
+  }
+
+  void navigateToHomeView() {
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.to(() => const HomeView(),
+          transition: Transition.fade, duration: kTransitionDuration);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    InitSlidingAnimation();
+    navigateToHomeView();
+    super.initState();
   }
 
   @override
