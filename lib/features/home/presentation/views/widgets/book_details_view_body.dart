@@ -5,6 +5,7 @@ import 'package:untitled/features/home/presentation/views/widgets/book_rating.da
 import 'books_action.dart';
 import 'custom_book_details_app_bar.dart';
 import 'custom_list_view_item.dart';
+import 'similar_books_list_view.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
@@ -51,6 +52,25 @@ class BookDetailsViewBody extends StatelessWidget {
             height: 37,
           ),
           BooksAction(),
+          const SizedBox(
+            height: 50,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You May also Like',
+              style: Styles.textStyle14.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          SimilarBooksListView(),
+          SizedBox(
+            height: 40,
+          ),
         ],
       ),
     );
