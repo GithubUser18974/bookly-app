@@ -27,7 +27,9 @@ class ServerFailure extends Failure {
         break;
       case DioExceptionType.badResponse:
         // TODO: Handle this case.
-        return ServerFailure('Error on the response');
+        return ServerFailure('Error on the response' +
+            dioError.message.toString() +
+            dioError.error.toString());
         break;
       case DioExceptionType.cancel:
         // TODO: Handle this case.
