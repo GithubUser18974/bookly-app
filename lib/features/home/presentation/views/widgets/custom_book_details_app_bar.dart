@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBarBookDetail extends StatelessWidget {
   const CustomAppBarBookDetail({super.key});
@@ -9,7 +10,9 @@ class CustomAppBarBookDetail extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).pop();
+          },
           icon: Icon(
             Icons.close,
             color: Colors.white,
