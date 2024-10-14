@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:untitled/core/utils/app_router.dart';
 import 'package:untitled/core/widgets/custome_error_widget.dart';
 import 'package:untitled/core/widgets/custome_loading_indecator.dart';
 import 'package:untitled/features/home/presentation/manager/featured_books/cubit/featured_books_cubit.dart';
@@ -23,9 +25,15 @@ class FeaturedBooksListView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 8),
-                    child: CustomListViewItem(
-                      imageUrl:
-                          state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                            extra: state.books[index]);
+                      },
+                      child: CustomListViewItem(
+                        imageUrl: state
+                            .books[index].volumeInfo!.imageLinks!.thumbnail!,
+                      ),
                     ),
                   );
                 }),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/features/home/data/models/book_model/book_model.dart';
 
 import 'book_details_section.dart';
 import 'custom_book_details_app_bar.dart';
 import 'similar_books_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({super.key});
-
+  const BookDetailsViewBody({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -20,7 +21,9 @@ class BookDetailsViewBody extends StatelessWidget {
             child: Column(
               children: [
                 CustomAppBarBookDetail(),
-                BookDetailsSection(),
+                BookDetailsSection(
+                  book: book,
+                ),
                 Expanded(
                   child: const SizedBox(
                     height: 50,
